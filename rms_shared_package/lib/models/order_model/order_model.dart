@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart'; // Add this to your package
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rms_shared_package/enums/enums.dart';
 import 'package:rms_shared_package/models/order_model/ordered_menu_model.dart';
 
@@ -31,13 +31,11 @@ class OrderModel {
     return OrderModel(
       id: json['id'] ?? '',
       tableNumber: json['tableNumber'] ?? '',
-      // CRITICAL: Map the list of items
       orderedMenu:
           (json['orderedMenu'] as List?)
               ?.map((item) => OrderedMenuModel.fromJson(item))
               .toList() ??
           [],
-      // CRITICAL: Convert String/Int back to Enums
       paymentMethod: json['paymentMethod'] != null
           ? PaymentMethod.values.byName(json['paymentMethod'])
           : null,
@@ -45,13 +43,11 @@ class OrderModel {
       orderStatus: OrderStatus.values.byName(json['orderStatus']),
       totalAmount: (json['totalAmount'] as num).toDouble(),
       seatCount: json['seatCount'] ?? 0,
-      // CRITICAL: Handle Firestore Timestamps
       createdAt: (json['createdAt'] as Timestamp).toDate(),
       updatedAt: (json['updatedAt'] as Timestamp).toDate(),
     );
   }
 
-  /// FULL DATA: Used for /orders collection (Billing/Manager Apps)
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -67,8 +63,6 @@ class OrderModel {
     };
   }
 
-  /// LITE DATA: Used for /kitchen_queue (KDS App)
-  /// This saves reads/bandwidth by excluding billing data.
   Map<String, dynamic> toKitchenJson() {
     return {
       'id': id,

@@ -28,4 +28,18 @@ class CategoryModel {
       'isActive': isActive,
     };
   }
+
+  CategoryModel copyWith({
+    String? id,
+    String? name,
+    int? sortOrder,
+    bool? isActive,
+  }) {
+    return CategoryModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      sortOrder: sortOrder ?? this.sortOrder,
+      isActive: isActive ?? this.isActive,
+    );
+  }
 }

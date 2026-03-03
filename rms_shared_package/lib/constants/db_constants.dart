@@ -1,6 +1,7 @@
 class MenuDbConstants {
   static const String menu = 'menu';
   static const String categories = 'categories';
+  static const String foods = 'foods';
 }
 
 class OrderDbConstants {
