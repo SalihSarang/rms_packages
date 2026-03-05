@@ -1,4 +1,4 @@
-enum UserRole { waiter, billing, chef }
+enum UserRole { waiter, billing, chef, cashier, kitchen }
 
 enum OrderStatus { pending, preparing, ready }
 

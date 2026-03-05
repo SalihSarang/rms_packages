@@ -12,4 +12,10 @@ class NeutralColors {
   static const Color shadow = Color(0xFF000000);
   static const Color icon = Color(0xFF9FA2AB);
   static const Color transparent = Color(0x00000000);
+
+  // Custom Auth Colors
+  static const Color authBackground = Color(0xFF111111);
+  static const Color authFieldBackground = Color(0xFF0A0A0A);
+  static const Color glassBackground = Color(0x08FFFFFF);
+  static const Color glassBorder = Color(0x0DFFFFFF);
 }
