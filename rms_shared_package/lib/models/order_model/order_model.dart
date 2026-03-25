@@ -7,7 +7,7 @@ class OrderModel {
   String tableNumber;
   int seatCount;
   OrderStatus orderStatus;
-  List<OrderedMenuModel> orderedMenu;
+  List<CartItemModel> orderedMenu;
   double totalAmount;
   PaymentMethod? paymentMethod;
   PaymentStatus paymentStatus;
@@ -33,7 +33,7 @@ class OrderModel {
       tableNumber: json['tableNumber'] ?? '',
       orderedMenu:
           (json['orderedMenu'] as List?)
-              ?.map((item) => OrderedMenuModel.fromJson(item))
+              ?.map((item) => CartItemModel.fromJson(item))
               .toList() ??
           [],
       paymentMethod: json['paymentMethod'] != null

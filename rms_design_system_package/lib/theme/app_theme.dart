@@ -12,7 +12,6 @@ class AppTheme {
         primary: PrimaryColors.defaultColor,
         secondary: PrimaryColors.brandGreen,
         surface: NeutralColors.surface,
-        background: NeutralColors.background,
         error: Colors.redAccent,
       ),
       useMaterial3: true,

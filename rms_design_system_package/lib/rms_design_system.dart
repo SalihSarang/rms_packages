@@ -1,4 +1,4 @@
-library rms_design_system;
+library;
 
 export 'app_colors/neutral_colors.dart';
 export 'app_colors/primary_colors.dart';

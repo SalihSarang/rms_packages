@@ -15,3 +15,9 @@ class StaffDbConstants {
 class ManagerDbConstants {
   static const String manager = 'manager';
 }
+
+class TableDbConstants {
+  static const String halls = 'halls';
+  static const String tables = 'tables';
+}
+

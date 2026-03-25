@@ -1,4 +1,13 @@
 export 'models/staff_model/staff_model.dart';
 export 'models/order_model/order_model.dart';
+export 'models/order_model/ordered_menu_model.dart';
+export 'models/table_models/hall_model.dart';
+export 'models/table_models/table_model.dart';
+export 'models/menu_models/food_model/food_model.dart';
+export 'models/menu_models/add_ons_model/add_ons_model.dart';
+export 'models/menu_models/portions_and_price/portions_and_price.dart';
+export 'models/menu_models/category_model/category_model.dart';
 export 'enums/enums.dart';
 export 'constants/db_constants.dart';
+export 'utils/base_remote_datasource.dart';
+export 'utils/error_handler.dart';

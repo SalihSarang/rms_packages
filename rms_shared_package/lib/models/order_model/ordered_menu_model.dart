@@ -1,29 +1,62 @@
-import 'package:rms_shared_package/models/menu_models/food_model/food_model.dart';
+import 'package:rms_shared_package/rms_shared_package.dart';
 
-class OrderedMenuModel {
-  final FoodModel food;
+class CartItemModel {
+  final String foodId;
+  final String name;
   final int quantity;
   final double price;
+  final PortionAndPrice? selectedPortion;
+  final List<AddOnsModel> selectedAddOns;
+  final String? specialInstructions;
 
-  OrderedMenuModel({
-    required this.food,
+  CartItemModel({
+    required this.foodId,
+    required this.name,
     required this.quantity,
     required this.price,
+    this.selectedPortion,
+    required this.selectedAddOns,
+    this.specialInstructions,
   });
 
-  factory OrderedMenuModel.fromJson(Map<String, dynamic> json) {
-    return OrderedMenuModel(
-      food: FoodModel.fromJson(json['food']),
+  factory CartItemModel.fromJson(Map<String, dynamic> json) {
+    return CartItemModel(
+      foodId: json['foodId'],
+      name: json['name'] ?? '',
       quantity: json['quantity'],
-      price: json['price'],
+      price: (json['price'] as num).toDouble(),
+      selectedPortion: json['selectedPortion'] != null
+          ? PortionAndPrice.fromJson(json['selectedPortion'])
+          : null,
+      selectedAddOns:
+          (json['selectedAddOns'] as List?)
+              ?.map((item) => AddOnsModel.fromJson(item))
+              .toList() ??
+          [],
+      specialInstructions: json['specialInstructions'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'food': food, 'quantity': quantity, 'price': price};
+    return {
+      'foodId': foodId,
+      'name': name,
+      'quantity': quantity,
+      'price': price,
+      'selectedPortion': selectedPortion?.toJson(),
+      'selectedAddOns': selectedAddOns.map((e) => e.toJson()).toList(),
+      'specialInstructions': specialInstructions,
+    };
   }
 
   Map<String, dynamic> toKitchenJson() {
-    return {'food': food, 'quantity': quantity};
+    return {
+      'foodId': foodId,
+      'name': name,
+      'quantity': quantity,
+      'selectedPortion': selectedPortion?.name,
+      'selectedAddOns': selectedAddOns.map((e) => e.name).toList(),
+      'specialInstructions': specialInstructions,
+    };
   }
 }

@@ -29,6 +29,22 @@ class FoodModel {
     required this.isCustomNotes,
   });
 
+  factory FoodModel.empty() {
+    return FoodModel(
+      id: '',
+      name: '',
+      description: '',
+      imageUrl: '',
+      category: CategoryModel.empty(),
+      isAvailable: false,
+      isFeatured: false,
+      portions: [],
+      addOns: [],
+      isVeg: false,
+      isCustomNotes: false,
+    );
+  }
+
   factory FoodModel.fromJson(Map<String, dynamic> json, {String? docId}) {
     return FoodModel(
       id: docId ?? json['id'] as String?,
