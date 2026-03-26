@@ -28,17 +28,10 @@ class HallModel extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'createdAt': createdAt.millisecondsSinceEpoch,
-    };
+    return {'name': name, 'createdAt': createdAt.millisecondsSinceEpoch};
   }
 
-  HallModel copyWith({
-    String? id,
-    String? name,
-    DateTime? createdAt,
-  }) {
+  HallModel copyWith({String? id, String? name, DateTime? createdAt}) {
     return HallModel(
       id: id ?? this.id,
       name: name ?? this.name,

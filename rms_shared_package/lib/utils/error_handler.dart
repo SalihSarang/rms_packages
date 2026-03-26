@@ -13,12 +13,13 @@ class ErrorHandler {
       return 'Please check your internet connection and try again.';
     } else if (error is Exception) {
       final errorStr = error.toString();
-      if (errorStr.contains('SocketException') || errorStr.contains('connection')) {
+      if (errorStr.contains('SocketException') ||
+          errorStr.contains('connection')) {
         return 'Network error. Please check your internet connection.';
       }
       return 'Something went wrong. Please try again later.';
     }
-    
+
     return 'An unexpected error occurred. Please try again.';
   }
 

@@ -26,18 +26,23 @@ mixin BaseRemoteDataSource {
       return result;
     } on FirebaseAuthException catch (e) {
       _logError(taskName, 'Auth error: [${e.code}] ${e.message}', e);
+
       throw Exception(ErrorHandler.getFriendlyMessage(e));
     } on FirebaseException catch (e) {
       _logError(taskName, 'Firestore error: [${e.code}] ${e.message}', e);
+
       throw Exception(ErrorHandler.getFriendlyMessage(e));
     } on SocketException catch (e) {
       _logError(taskName, 'Network error: $e');
+
       throw Exception(ErrorHandler.getFriendlyMessage(e));
     } on TimeoutException catch (e) {
       _logError(taskName, 'Timeout error: $e');
+
       throw Exception('Request timed out. Please check your connection.');
     } catch (e) {
       _logError(taskName, 'Unknown error: $e', e);
+
       if (e is Exception) {
         rethrow;
       }
