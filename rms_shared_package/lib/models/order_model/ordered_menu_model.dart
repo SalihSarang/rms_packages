@@ -3,6 +3,7 @@ import 'package:rms_shared_package/rms_shared_package.dart';
 class CartItemModel {
   final String foodId;
   final String name;
+  final String imageUrl;
   final int quantity;
   final double price;
   final PortionAndPrice? selectedPortion;
@@ -12,6 +13,7 @@ class CartItemModel {
   CartItemModel({
     required this.foodId,
     required this.name,
+    required this.imageUrl,
     required this.quantity,
     required this.price,
     this.selectedPortion,
@@ -23,6 +25,7 @@ class CartItemModel {
     return CartItemModel(
       foodId: json['foodId'],
       name: json['name'] ?? '',
+      imageUrl: json['imageUrl'] ?? '',
       quantity: json['quantity'],
       price: (json['price'] as num).toDouble(),
       selectedPortion: json['selectedPortion'] != null
@@ -41,6 +44,7 @@ class CartItemModel {
     return {
       'foodId': foodId,
       'name': name,
+      'imageUrl': imageUrl,
       'quantity': quantity,
       'price': price,
       'selectedPortion': selectedPortion?.toJson(),
@@ -53,6 +57,7 @@ class CartItemModel {
     return {
       'foodId': foodId,
       'name': name,
+      'imageUrl': imageUrl,
       'quantity': quantity,
       'selectedPortion': selectedPortion?.name,
       'selectedAddOns': selectedAddOns.map((e) => e.name).toList(),

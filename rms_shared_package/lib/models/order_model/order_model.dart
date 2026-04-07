@@ -5,6 +5,7 @@ import 'package:rms_shared_package/models/order_model/ordered_menu_model.dart';
 class OrderModel {
   String id;
   String tableNumber;
+  String staffId;
   int seatCount;
   OrderStatus orderStatus;
   List<CartItemModel> orderedMenu;
@@ -17,6 +18,7 @@ class OrderModel {
   OrderModel({
     required this.id,
     required this.tableNumber,
+    required this.staffId,
     required this.orderedMenu,
     this.paymentMethod,
     required this.paymentStatus,
@@ -31,6 +33,7 @@ class OrderModel {
     return OrderModel(
       id: json['id'] ?? '',
       tableNumber: json['tableNumber'] ?? '',
+      staffId: json['staffId'] ?? '',
       orderedMenu:
           (json['orderedMenu'] as List?)
               ?.map((item) => CartItemModel.fromJson(item))
@@ -52,6 +55,7 @@ class OrderModel {
     return {
       'id': id,
       'tableNumber': tableNumber,
+      'staffId': staffId,
       'orderedMenu': orderedMenu.map((e) => e.toJson()).toList(),
       'paymentMethod': paymentMethod?.name,
       'paymentStatus': paymentStatus.name,
