@@ -7,4 +7,5 @@ class StatusColors {
   static const Color requests = Color(0xFF9C27B0);
   static const Color paid = Color(0xFF9E9E9E);
   static const Color cancelled = Color(0xFFF44336);
+  static const Color purpleLight = Color(0xFFB388FF);
 }
