@@ -1,7 +1,14 @@
 class AddOnsModel {
+  /// The name of the add-on.
   final String name;
+
+  /// The price of the add-on.
   final double price;
+
+  /// The quantity of the add-on.
   final int? count;
+
+  /// The unit of measurement for the add-on.
   final String? unit;
 
   AddOnsModel({required this.name, required this.price, this.count, this.unit});

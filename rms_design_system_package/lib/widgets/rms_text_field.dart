@@ -3,14 +3,32 @@ import '../app_colors/neutral_colors.dart';
 import '../app_colors/primary_colors.dart';
 import '../app_colors/text_colors.dart';
 
+/// A customizable text field widget for the RMS application.
+///
+/// Provides a standard text input with label, hint text, validation, and optional suffix icon.
 class RmsTextField extends StatelessWidget {
+  /// The label displayed above the text field.
   final String label;
+
+  /// The hint text displayed inside the text field when empty.
   final String hintText;
+
+  /// Whether the text field should obscure input (for passwords).
   final bool obscureText;
+
+  /// The controller for managing the text field's content.
   final TextEditingController? controller;
+
+  /// Callback function called when the text field's value changes.
   final ValueChanged<String>? onChanged;
+
+  /// Optional suffix icon to display at the end of the text field.
   final Widget? suffixIcon;
+
+  /// Optional widget to display next to the label.
   final Widget? labelSuffix;
+
+  /// Optional validator function to validate the text field's input.
   final String? Function(String?)? validator;
 
   const RmsTextField({

@@ -1,8 +1,20 @@
+/// Represents a category of menu items.
+///
+/// Categories are used to group related menu items together.
 class CategoryModel {
+  /// Unique identifier for the category.
   final String id;
+
+  /// The name of the category.
   final String name;
+
+  /// The order in which the category should be displayed.
   final int sortOrder;
+
+  /// Flag to indicate if the category is currently active.
   final bool isActive;
+
+  /// The number of items in the category.
   final int itemCount;
 
   CategoryModel({

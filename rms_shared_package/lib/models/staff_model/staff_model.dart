@@ -1,14 +1,35 @@
 import 'package:rms_shared_package/enums/enums.dart';
 
+/// Represents a staff member working at the restaurant.
+///
+/// This model holds all relevant information about a staff member,
+/// including their role, contact details, and status.
 class StaffModel {
+  /// Unique identifier for the staff member.
   final String id;
+
+  /// The full name of the staff member.
   final String name;
+
+  /// The email address of the staff member.
   final String email;
+
+  /// The phone number of the staff member.
   final String phoneNumber;
+
+  /// The role of the staff member (e.g., waiter, chef).
   final UserRole role;
+
+  /// The URL of the staff member's avatar image.
   final String avatar;
+
+  /// The URL of the staff member's ID proof image.
   final String idProof;
+
+  /// Flag to indicate if the staff member is currently active.
   final bool isActive;
+
+  /// The last time the staff member was active.
   final DateTime? lastActive;
 
   StaffModel({

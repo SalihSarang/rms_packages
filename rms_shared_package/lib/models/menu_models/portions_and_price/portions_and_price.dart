@@ -1,7 +1,18 @@
+/// Represents a portion size and its corresponding price for a food item.
+///
+/// Allows specifying different sizes (e.g., Small, Medium, Large)
+/// with their own prices.
 class PortionAndPrice {
+  /// The name of the portion (e.g., "Small", "1/2 Dozen").
   final String name;
+
+  /// The price for this portion.
   final double price;
+
+  /// The quantity for this portion (optional).
   final int? count;
+
+  /// The unit of measurement for this portion (optional).
   final String? unit;
 
   PortionAndPrice({

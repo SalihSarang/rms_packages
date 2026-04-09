@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 
+/// A utility class for handling and formatting errors.
 class ErrorHandler {
   /// Maps various exceptions to user-friendly error messages.
   static String getFriendlyMessage(dynamic error) {

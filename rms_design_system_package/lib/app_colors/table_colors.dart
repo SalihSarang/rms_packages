@@ -7,7 +7,7 @@ class TableColors {
 
   /// Accent color for round tables and sections.
   static const Color round = Color(0xFF5CE0E6);
-  
+
   /// A soft, premium red for destructive actions.
   static const Color destructive = Color(0xFFE47C7C);
 

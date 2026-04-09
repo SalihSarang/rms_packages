@@ -1,9 +1,17 @@
+/// Represents a manager user in the system.
+///
+/// This model holds the credentials and basic information for a manager.
 class ManagerModel {
+  /// The name of the manager.
   final String name;
+
+  /// The email address of the manager.
   final String email;
+
+  /// The password for the manager account.
   final String password;
 
-  ManagerModel({
+  const ManagerModel({
     required this.name,
     required this.email,
     required this.password,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../app_colors/primary_colors.dart';
 import '../app_colors/neutral_colors.dart';
 
+/// A theme class for the RMS application.
 class AppTheme {
+  /// Returns the dark theme configuration for the application.
   static ThemeData get darkTheme {
     return ThemeData(
       brightness: Brightness.dark,

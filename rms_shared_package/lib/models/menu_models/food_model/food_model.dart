@@ -2,17 +2,42 @@ import 'package:rms_shared_package/models/menu_models/add_ons_model/add_ons_mode
 import 'package:rms_shared_package/models/menu_models/category_model/category_model.dart';
 import 'package:rms_shared_package/models/menu_models/portions_and_price/portions_and_price.dart';
 
+/// Represents a food item on the menu.
+///
+/// This model holds detailed information about a menu item,
+/// including its name, description, price, category, and other attributes.
 class FoodModel {
+  /// Unique identifier for the food item.
   final String? id;
+
+  /// The name of the food item.
   final String name;
+
+  /// The description of the food item.
   final String description;
+
+  /// The URL of the food item's image.
   final String imageUrl;
+
+  /// Flag to indicate if the food item is currently available.
   final bool isAvailable;
+
+  /// Flag to indicate if the food item is featured.
   final bool isFeatured;
+
+  /// Flag to indicate if the food item is vegetarian.
   final bool isVeg;
+
+  /// Flag to indicate if the food item has custom notes.
   final bool isCustomNotes;
+
+  /// The category of the food item.
   final CategoryModel category;
+
+  /// The list of portions and their prices.
   final List<PortionAndPrice> portions;
+
+  /// The list of add-ons available for this food item.
   final List<AddOnsModel> addOns;
 
   FoodModel({
