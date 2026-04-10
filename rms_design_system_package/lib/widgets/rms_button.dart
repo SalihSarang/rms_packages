@@ -27,6 +27,9 @@ class RmsButton extends StatelessWidget {
   /// The color of the border.
   final Color? borderColor;
 
+  /// The height of the button.
+  final double? height;
+
   const RmsButton({
     super.key,
     required this.text,
@@ -36,6 +39,7 @@ class RmsButton extends StatelessWidget {
     this.isOutlined = false,
     this.textColor,
     this.borderColor,
+    this.height,
   });
 
   @override
@@ -44,8 +48,11 @@ class RmsButton extends StatelessWidget {
     final contentColor =
         textColor ?? (isOutlined ? activeColor : NeutralColors.white);
 
+    final verticalPadding = height != null ? 0.0 : 16.0;
+
     return SizedBox(
       width: double.infinity,
+      height: height,
       child: isOutlined
           ? OutlinedButton(
               onPressed: isLoading ? null : onPressed,
@@ -58,7 +65,7 @@ class RmsButton extends StatelessWidget {
                 foregroundColor: (onPressed == null || isLoading)
                     ? contentColor.withValues(alpha: 0.3)
                     : contentColor,
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: verticalPadding),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -71,7 +78,7 @@ class RmsButton extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: activeColor,
                 foregroundColor: contentColor,
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: verticalPadding),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
