@@ -19,6 +19,9 @@ class OrderModel {
   /// The ID of the staff member who took the order.
   String staffId;
 
+  /// The full name of the staff member who took the order.
+  String staffName;
+
   /// The number of seats occupied by the customers.
   int seatCount;
 
@@ -48,6 +51,7 @@ class OrderModel {
     required this.tableNumber,
     required this.tableId,
     required this.staffId,
+    required this.staffName,
     required this.orderedMenu,
     this.paymentMethod,
     required this.paymentStatus,
@@ -64,6 +68,7 @@ class OrderModel {
       tableNumber: json['tableNumber'] ?? '',
       tableId: json['tableId'] ?? '',
       staffId: json['staffId'] ?? '',
+      staffName: json['staffName'] ?? '',
       orderedMenu:
           (json['orderedMenu'] as List?)
               ?.map((item) => CartItemModel.fromJson(item))
@@ -76,9 +81,20 @@ class OrderModel {
       orderStatus: _parseOrderStatus(json['orderStatus']),
       totalAmount: (json['totalAmount'] as num).toDouble(),
       seatCount: json['seatCount'] ?? 0,
-      createdAt: (json['createdAt'] as Timestamp).toDate(),
-      updatedAt: (json['updatedAt'] as Timestamp).toDate(),
+      createdAt: _parseDateTime(json['createdAt']),
+      updatedAt: _parseDateTime(json['updatedAt']),
     );
+  }
+
+  static DateTime _parseDateTime(dynamic date) {
+    if (date == null) return DateTime.now();
+    if (date is Timestamp) return date.toDate();
+    if (date is DateTime) return date;
+    if (date is String) {
+      final parsed = DateTime.tryParse(date);
+      if (parsed != null) return parsed;
+    }
+    return DateTime.now();
   }
 
   Map<String, dynamic> toJson() {
@@ -87,6 +103,7 @@ class OrderModel {
       'tableNumber': tableNumber,
       'tableId': tableId,
       'staffId': staffId,
+      'staffName': staffName,
       'orderedMenu': orderedMenu.map((e) => e.toJson()).toList(),
       'paymentMethod': paymentMethod?.name,
       'paymentStatus': paymentStatus.name,

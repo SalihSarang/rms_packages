@@ -22,10 +22,16 @@ class PortionAndPrice {
     this.unit,
   });
 
-  factory PortionAndPrice.fromJson(Map<String, dynamic> json) {
+  factory PortionAndPrice.fromJson(dynamic json) {
+    if (json is! Map<String, dynamic>) {
+      return PortionAndPrice(
+        name: json?.toString() ?? 'Default',
+        price: 0.0,
+      );
+    }
     return PortionAndPrice(
-      name: json['name'],
-      price: json['price'],
+      name: json['name'] ?? '',
+      price: (json['price'] as num?)?.toDouble() ?? 0.0,
       count: json['count'],
       unit: json['unit'],
     );

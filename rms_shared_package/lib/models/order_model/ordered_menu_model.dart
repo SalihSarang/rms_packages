@@ -32,6 +32,9 @@ class CartItemModel {
   /// Flag to indicate if this item has been sent to the kitchen.
   final bool isSentToKitchen;
 
+  /// Flag to indicate if this item has been prepared by the chef.
+  final bool isPrepared;
+
   CartItemModel({
     required this.foodId,
     required this.name,
@@ -42,6 +45,7 @@ class CartItemModel {
     required this.selectedAddOns,
     this.specialInstructions,
     this.isSentToKitchen = false,
+    this.isPrepared = false,
   });
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) {
@@ -61,6 +65,7 @@ class CartItemModel {
           [],
       specialInstructions: json['specialInstructions'],
       isSentToKitchen: json['isSentToKitchen'] ?? false,
+      isPrepared: json['isPrepared'] ?? false,
     );
   }
 
@@ -75,6 +80,7 @@ class CartItemModel {
       'selectedAddOns': selectedAddOns.map((e) => e.toJson()).toList(),
       'specialInstructions': specialInstructions,
       'isSentToKitchen': isSentToKitchen,
+      'isPrepared': isPrepared,
     };
   }
 
@@ -88,6 +94,7 @@ class CartItemModel {
       'selectedAddOns': selectedAddOns.map((e) => e.name).toList(),
       'specialInstructions': specialInstructions,
       'isSentToKitchen': isSentToKitchen,
+      'isPrepared': isPrepared,
     };
   }
 }
