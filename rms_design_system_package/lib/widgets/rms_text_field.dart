@@ -68,7 +68,7 @@ class RmsTextField extends StatelessWidget {
           onChanged: onChanged,
           obscureText: obscureText,
           validator: validator,
-          style: const TextStyle(color: TextColors.inverse),
+          style: const TextStyle(color: TextColors.primary),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(

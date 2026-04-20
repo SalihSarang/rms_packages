@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../app_colors/neutral_colors.dart';
 import '../app_colors/primary_colors.dart';
+import '../app_colors/text_colors.dart';
 
 /// A customizable button widget for the RMS application.
 ///
@@ -46,7 +47,7 @@ class RmsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final activeColor = borderColor ?? PrimaryColors.defaultColor;
     final contentColor =
-        textColor ?? (isOutlined ? activeColor : NeutralColors.white);
+        textColor ?? (isOutlined ? activeColor : TextColors.primary);
 
     final verticalPadding = height != null ? 0.0 : 16.0;
 

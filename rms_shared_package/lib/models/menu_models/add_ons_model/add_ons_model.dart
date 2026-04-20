@@ -15,10 +15,7 @@ class AddOnsModel {
 
   factory AddOnsModel.fromJson(dynamic json) {
     if (json is! Map<String, dynamic>) {
-      return AddOnsModel(
-        name: json?.toString() ?? 'Default',
-        price: 0.0,
-      );
+      return AddOnsModel(name: json?.toString() ?? 'Default', price: 0.0);
     }
     return AddOnsModel(
       name: json['name'] ?? '',

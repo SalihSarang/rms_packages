@@ -32,6 +32,24 @@ class StaffModel {
   /// The last time the staff member was active.
   final DateTime? lastActive;
 
+  /// The current shift status stored as a lightweight snapshot on the staff doc.
+  final ShiftStatus shiftStatus;
+
+  /// The active shift session id, if the staff member currently has one.
+  final String? currentShiftSessionId;
+
+  /// The current shift start time, if a shift is active or paused.
+  final DateTime? currentShiftStart;
+
+  /// The most recent shift end time.
+  final DateTime? currentShiftEnd;
+
+  /// The assigned scheduled shift start time for the active day.
+  final DateTime? scheduledShiftStart;
+
+  /// The assigned scheduled shift end time for the active day.
+  final DateTime? scheduledShiftEnd;
+
   StaffModel({
     required this.id,
     required this.name,
@@ -42,6 +60,12 @@ class StaffModel {
     required this.role,
     required this.isActive,
     this.lastActive,
+    this.shiftStatus = ShiftStatus.notStarted,
+    this.currentShiftSessionId,
+    this.currentShiftStart,
+    this.currentShiftEnd,
+    this.scheduledShiftStart,
+    this.scheduledShiftEnd,
   });
 
   factory StaffModel.fromMap(Map<String, dynamic> data, String documentId) {
@@ -57,9 +81,16 @@ class StaffModel {
         (e) => e.name == data['role'],
         orElse: () => UserRole.waiter,
       ),
-      lastActive: data['lastActive'] != null
-          ? DateTime.fromMillisecondsSinceEpoch((data['lastActive'] as int))
-          : null,
+      lastActive: _readDate(data['lastActive']),
+      shiftStatus: ShiftStatus.values.firstWhere(
+        (e) => e.name == data['shiftStatus'],
+        orElse: () => ShiftStatus.notStarted,
+      ),
+      currentShiftSessionId: data['currentShiftSessionId'] as String?,
+      currentShiftStart: _readDate(data['currentShiftStart']),
+      currentShiftEnd: _readDate(data['currentShiftEnd']),
+      scheduledShiftStart: _readDate(data['scheduledShiftStart']),
+      scheduledShiftEnd: _readDate(data['scheduledShiftEnd']),
     );
   }
 
@@ -72,6 +103,16 @@ class StaffModel {
       'idProof': idProof,
       'role': role.name,
       'isActive': isActive,
+      'shiftStatus': shiftStatus.name,
+      'currentShiftSessionId': currentShiftSessionId,
+      if (currentShiftStart != null)
+        'currentShiftStart': currentShiftStart!.millisecondsSinceEpoch,
+      if (currentShiftEnd != null)
+        'currentShiftEnd': currentShiftEnd!.millisecondsSinceEpoch,
+      if (scheduledShiftStart != null)
+        'scheduledShiftStart': scheduledShiftStart!.millisecondsSinceEpoch,
+      if (scheduledShiftEnd != null)
+        'scheduledShiftEnd': scheduledShiftEnd!.millisecondsSinceEpoch,
       if (lastActive != null) 'lastActive': lastActive!.millisecondsSinceEpoch,
     };
   }
@@ -86,6 +127,12 @@ class StaffModel {
     String? idProof,
     bool? isActive,
     DateTime? lastActive,
+    ShiftStatus? shiftStatus,
+    String? currentShiftSessionId,
+    DateTime? currentShiftStart,
+    DateTime? currentShiftEnd,
+    DateTime? scheduledShiftStart,
+    DateTime? scheduledShiftEnd,
   }) {
     return StaffModel(
       id: id ?? this.id,
@@ -97,6 +144,20 @@ class StaffModel {
       idProof: idProof ?? this.idProof,
       isActive: isActive ?? this.isActive,
       lastActive: lastActive ?? this.lastActive,
+      shiftStatus: shiftStatus ?? this.shiftStatus,
+      currentShiftSessionId:
+          currentShiftSessionId ?? this.currentShiftSessionId,
+      currentShiftStart: currentShiftStart ?? this.currentShiftStart,
+      currentShiftEnd: currentShiftEnd ?? this.currentShiftEnd,
+      scheduledShiftStart: scheduledShiftStart ?? this.scheduledShiftStart,
+      scheduledShiftEnd: scheduledShiftEnd ?? this.scheduledShiftEnd,
     );
+  }
+
+  static DateTime? _readDate(dynamic value) {
+    if (value is int) {
+      return DateTime.fromMillisecondsSinceEpoch(value);
+    }
+    return null;
   }
 }

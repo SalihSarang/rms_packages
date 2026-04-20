@@ -244,7 +244,7 @@ class _RmsAlertDialogContent extends StatelessWidget {
       title,
       textAlign: TextAlign.center,
       style: const TextStyle(
-        color: NeutralColors.white,
+        color: TextColors.primary,
         fontSize: 18,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.2,

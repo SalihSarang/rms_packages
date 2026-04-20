@@ -24,10 +24,7 @@ class PortionAndPrice {
 
   factory PortionAndPrice.fromJson(dynamic json) {
     if (json is! Map<String, dynamic>) {
-      return PortionAndPrice(
-        name: json?.toString() ?? 'Default',
-        price: 0.0,
-      );
+      return PortionAndPrice(name: json?.toString() ?? 'Default', price: 0.0);
     }
     return PortionAndPrice(
       name: json['name'] ?? '',

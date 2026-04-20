@@ -13,6 +13,8 @@ class OrderDbConstants {
 /// Staff Database Constants
 class StaffDbConstants {
   static const String staff = 'staff';
+  static const String shiftHistory = 'shift_history';
+  static const String shiftSchedule = 'shift_schedule';
 }
 
 /// Manager Database Constants

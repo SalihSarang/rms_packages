@@ -1,6 +1,9 @@
 /// Represents the different roles a user can have in the system.
 enum UserRole { waiter, billing, chef, cashier, kitchen }
 
+/// Represents the lifecycle state of a staff shift.
+enum ShiftStatus { notStarted, active, paused, ended, missed }
+
 /// Represents the different statuses an order can have.
 enum OrderStatus { pending, preparing, ready, served, completed }
 

@@ -8,11 +8,26 @@ class NeutralColors {
   /// The surface color of the application.
   static const Color surface = Color(0xFF1A2332);
 
+  /// The background color for the dark theme (Cashier Portal).
+  static const Color darkBackground = Color(0xFF1E1E1E);
+
+  /// The surface/card color for the dark theme (Cashier Portal).
+  static const Color darkSurface = Color(0xFF333333);
+
+  /// Selected surface color.
+  static const Color surfaceSelected = Color(0xFF323332);
+
+  /// Lighter surface for icons/sub-elements.
+  static const Color surfaceLighter = Color(0xFF3E3E3E);
+
   /// The background color of the app bar.
   static const Color appBarBackground = Color(0xFF2C3140);
 
   /// The border color of the application.
   static const Color border = Color(0xFF30363D);
+
+  /// The divider color for separators.
+  static const Color divider = Color(0xFF2C2C2C);
 
   /// The card color of the application.
   static const Color card = Color(0xFF272B34);
