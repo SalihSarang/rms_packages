@@ -27,3 +27,8 @@ class TableDbConstants {
   static const String halls = 'halls';
   static const String tables = 'tables';
 }
+
+/// Kitchen Database Constants
+class KitchenDbConstants {
+  static const String kitchenQueue = 'kitchen_queue';
+}
