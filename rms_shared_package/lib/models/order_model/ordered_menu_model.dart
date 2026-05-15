@@ -19,10 +19,6 @@ class CartItemModel {
 
   /// The base price of the food item.
   final double price;
-  final PortionAndPrice? selectedPortion;
-  final List<AddOnsModel> selectedAddOns;
-  final String? specialInstructions;
-
   /// The selected portion size and its corresponding price.
   final PortionAndPrice? selectedPortion;
 

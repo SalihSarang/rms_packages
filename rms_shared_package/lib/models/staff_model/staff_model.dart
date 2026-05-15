@@ -28,7 +28,6 @@ class StaffModel {
 
   /// Flag to indicate if the staff member is currently active.
   final bool isActive;
-  final DateTime? lastActive;
 
   /// The last time the staff member was active.
   final DateTime? lastActive;

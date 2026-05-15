@@ -8,9 +8,6 @@ class PortionAndPrice {
 
   /// The price for this portion.
   final double price;
-  final int? count;
-  final String? unit;
-
   /// The quantity for this portion (optional).
   final int? count;
 

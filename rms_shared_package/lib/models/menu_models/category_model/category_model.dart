@@ -13,8 +13,6 @@ class CategoryModel {
 
   /// Flag to indicate if the category is currently active.
   final bool isActive;
-  final int itemCount;
-
   /// The number of items in the category.
   final int itemCount;
 

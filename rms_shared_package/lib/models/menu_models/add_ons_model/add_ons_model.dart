@@ -4,9 +4,6 @@ class AddOnsModel {
 
   /// The price of the add-on.
   final double price;
-  final int? count;
-  final String? unit;
-
   /// The quantity of the add-on.
   final int? count;
 
