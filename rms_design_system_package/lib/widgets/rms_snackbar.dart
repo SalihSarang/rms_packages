@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import '../app_colors/neutral_colors.dart';
 import '../app_colors/status_colors.dart';
+import '../app_colors/text_colors.dart';
 
+/// Represents the different types of snackbars available in the RMS application.
 enum RmsSnackbarType { error, success, info, warning }
 
+/// A utility class for displaying snackbars in the RMS application.
 class RmsSnackbar {
+  /// Shows a snackbar with the given message and type.
   static void show(
     BuildContext context, {
     required String message,
@@ -52,7 +56,7 @@ class RmsSnackbar {
                 child: Text(
                   message,
                   style: const TextStyle(
-                    color: NeutralColors.white,
+                    color: TextColors.primary,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),

@@ -1,9 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
+/// Represents a hall or section within the restaurant.
+///
+/// Halls are used to organize tables and define the layout of the dining area.
 class HallModel extends Equatable {
+  /// Unique identifier for the hall.
   final String id;
+
+  /// The name of the hall (e.g., "Main Hall", "Patio").
   final String name;
+
+  /// The date and time when the hall was created.
   final DateTime createdAt;
 
   const HallModel({

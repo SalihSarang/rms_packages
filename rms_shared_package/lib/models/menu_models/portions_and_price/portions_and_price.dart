@@ -1,7 +1,20 @@
+/// Represents a portion size and its corresponding price for a food item.
+///
+/// Allows specifying different sizes (e.g., Small, Medium, Large)
+/// with their own prices.
 class PortionAndPrice {
+  /// The name of the portion (e.g., "Small", "1/2 Dozen").
   final String name;
+
+  /// The price for this portion.
   final double price;
   final int? count;
+  final String? unit;
+
+  /// The quantity for this portion (optional).
+  final int? count;
+
+  /// The unit of measurement for this portion (optional).
   final String? unit;
 
   PortionAndPrice({
@@ -11,10 +24,13 @@ class PortionAndPrice {
     this.unit,
   });
 
-  factory PortionAndPrice.fromJson(Map<String, dynamic> json) {
+  factory PortionAndPrice.fromJson(dynamic json) {
+    if (json is! Map<String, dynamic>) {
+      return PortionAndPrice(name: json?.toString() ?? 'Default', price: 0.0);
+    }
     return PortionAndPrice(
-      name: json['name'],
-      price: json['price'],
+      name: json['name'] ?? '',
+      price: (json['price'] as num?)?.toDouble() ?? 0.0,
       count: json['count'],
       unit: json['unit'],
     );
