@@ -68,6 +68,7 @@ class RmsAlertDialog {
     VoidCallback? onConfirm,
     VoidCallback? onCancel,
     Color? accentColor,
+    Color? backgroundColor,
     IconData? icon,
     bool showCancelButton = true,
     bool barrierDismissible = true,
@@ -85,6 +86,7 @@ class RmsAlertDialog {
         onConfirm: onConfirm,
         onCancel: onCancel,
         accentColor: accentColor,
+        backgroundColor: backgroundColor,
         icon: icon,
         showCancelButton: showCancelButton,
       ),
@@ -107,6 +109,7 @@ class _RmsAlertDialogContent extends StatelessWidget {
     this.onConfirm,
     this.onCancel,
     this.accentColor,
+    this.backgroundColor,
     this.icon,
   });
 
@@ -118,6 +121,7 @@ class _RmsAlertDialogContent extends StatelessWidget {
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
   final Color? accentColor;
+  final Color? backgroundColor;
   final IconData? icon;
   final bool showCancelButton;
 
@@ -189,7 +193,7 @@ class _RmsAlertDialogContent extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
-        color: NeutralColors.surface,
+        color: backgroundColor ?? NeutralColors.surface,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: NeutralColors.border,

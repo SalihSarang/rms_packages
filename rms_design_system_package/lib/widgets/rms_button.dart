@@ -28,24 +28,34 @@ class RmsButton extends StatelessWidget {
   /// The color of the border.
   final Color? borderColor;
 
+  /// The background color of the button.
+  final Color? backgroundColor;
+
+  /// A custom child widget to display inside the button.
+  /// If provided, this replaces the default text and icon layout.
+  final Widget? child;
+
   /// The height of the button.
   final double? height;
 
   const RmsButton({
     super.key,
-    required this.text,
+    this.text = '',
     required this.onPressed,
     this.isLoading = false,
     this.icon,
     this.isOutlined = false,
     this.textColor,
     this.borderColor,
+    this.backgroundColor,
+    this.child,
     this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     final activeColor = borderColor ?? PrimaryColors.defaultColor;
+    final fillColor = backgroundColor ?? activeColor;
     final contentColor =
         textColor ?? (isOutlined ? activeColor : TextColors.primary);
 
@@ -77,11 +87,16 @@ class RmsButton extends StatelessWidget {
           : ElevatedButton(
               onPressed: isLoading ? null : onPressed,
               style: ElevatedButton.styleFrom(
-                backgroundColor: activeColor,
+                backgroundColor: (onPressed == null || isLoading)
+                    ? fillColor.withValues(alpha: 0.3)
+                    : fillColor,
                 foregroundColor: contentColor,
                 padding: EdgeInsets.symmetric(vertical: verticalPadding),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
+                  side: borderColor != null
+                      ? BorderSide(color: borderColor!)
+                      : BorderSide.none,
                 ),
                 elevation: 0,
                 shadowColor: NeutralColors.transparent,
@@ -99,6 +114,9 @@ class RmsButton extends StatelessWidget {
         child: CircularProgressIndicator(strokeWidth: 2, color: contentColor),
       );
     }
+
+    if (child != null) return child!;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

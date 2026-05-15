@@ -13,6 +13,8 @@ class ShiftSession {
   final List<PauseEntry> pauseEntries;
   final int workedMinutes;
   final ShiftStatus status;
+  final bool isPaid;
+  final String? payoutId;
 
   const ShiftSession({
     required this.id,
@@ -26,6 +28,8 @@ class ShiftSession {
     required this.pauseEntries,
     required this.workedMinutes,
     required this.status,
+    this.isPaid = false,
+    this.payoutId,
   });
 
   factory ShiftSession.fromMap(Map<String, dynamic> map, String id) {
@@ -50,6 +54,8 @@ class ShiftSession {
         (value) => value.name == map['status'],
         orElse: () => ShiftStatus.notStarted,
       ),
+      isPaid: map['isPaid'] as bool? ?? false,
+      payoutId: map['payoutId'] as String?,
     );
   }
 
@@ -65,6 +71,8 @@ class ShiftSession {
       'pauseEntries': pauseEntries.map((entry) => entry.toMap()).toList(),
       'workedMinutes': workedMinutes,
       'status': status.name,
+      'isPaid': isPaid,
+      if (payoutId != null) 'payoutId': payoutId,
     };
   }
 
@@ -80,6 +88,8 @@ class ShiftSession {
     List<PauseEntry>? pauseEntries,
     int? workedMinutes,
     ShiftStatus? status,
+    bool? isPaid,
+    String? payoutId,
   }) {
     return ShiftSession(
       id: id ?? this.id,
@@ -93,6 +103,8 @@ class ShiftSession {
       pauseEntries: pauseEntries ?? this.pauseEntries,
       workedMinutes: workedMinutes ?? this.workedMinutes,
       status: status ?? this.status,
+      isPaid: isPaid ?? this.isPaid,
+      payoutId: payoutId ?? this.payoutId,
     );
   }
 

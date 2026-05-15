@@ -50,6 +50,18 @@ class StaffModel {
   /// The assigned scheduled shift end time for the active day.
   final DateTime? scheduledShiftEnd;
 
+  /// The monetary rate for the staff member's wage.
+  final double? baseWage;
+
+  /// The type of wage calculation (e.g., hourly, monthly).
+  final WageType? wageType;
+
+  /// The timestamp of the last successful salary payout.
+  final DateTime? lastPaidDate;
+
+  /// Encrypted or tokenized bank account/UPI details for payouts.
+  final Map<String, dynamic>? bankDetails;
+
   StaffModel({
     required this.id,
     required this.name,
@@ -66,6 +78,10 @@ class StaffModel {
     this.currentShiftEnd,
     this.scheduledShiftStart,
     this.scheduledShiftEnd,
+    this.baseWage,
+    this.wageType,
+    this.lastPaidDate,
+    this.bankDetails,
   });
 
   factory StaffModel.fromMap(Map<String, dynamic> data, String documentId) {
@@ -91,6 +107,15 @@ class StaffModel {
       currentShiftEnd: _readDate(data['currentShiftEnd']),
       scheduledShiftStart: _readDate(data['scheduledShiftStart']),
       scheduledShiftEnd: _readDate(data['scheduledShiftEnd']),
+      baseWage: (data['baseWage'] as num?)?.toDouble(),
+      wageType: data['wageType'] != null
+          ? WageType.values.firstWhere(
+              (e) => e.name == data['wageType'],
+              orElse: () => WageType.hourly,
+            )
+          : null,
+      lastPaidDate: _readDate(data['lastPaidDate']),
+      bankDetails: data['bankDetails'] as Map<String, dynamic>?,
     );
   }
 
@@ -114,6 +139,11 @@ class StaffModel {
       if (scheduledShiftEnd != null)
         'scheduledShiftEnd': scheduledShiftEnd!.millisecondsSinceEpoch,
       if (lastActive != null) 'lastActive': lastActive!.millisecondsSinceEpoch,
+      if (baseWage != null) 'baseWage': baseWage,
+      if (wageType != null) 'wageType': wageType!.name,
+      if (lastPaidDate != null)
+        'lastPaidDate': lastPaidDate!.millisecondsSinceEpoch,
+      if (bankDetails != null) 'bankDetails': bankDetails,
     };
   }
 
@@ -133,6 +163,10 @@ class StaffModel {
     DateTime? currentShiftEnd,
     DateTime? scheduledShiftStart,
     DateTime? scheduledShiftEnd,
+    double? baseWage,
+    WageType? wageType,
+    DateTime? lastPaidDate,
+    Map<String, dynamic>? bankDetails,
   }) {
     return StaffModel(
       id: id ?? this.id,
@@ -151,6 +185,10 @@ class StaffModel {
       currentShiftEnd: currentShiftEnd ?? this.currentShiftEnd,
       scheduledShiftStart: scheduledShiftStart ?? this.scheduledShiftStart,
       scheduledShiftEnd: scheduledShiftEnd ?? this.scheduledShiftEnd,
+      baseWage: baseWage ?? this.baseWage,
+      wageType: wageType ?? this.wageType,
+      lastPaidDate: lastPaidDate ?? this.lastPaidDate,
+      bankDetails: bankDetails ?? this.bankDetails,
     );
   }
 

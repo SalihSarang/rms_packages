@@ -10,4 +10,9 @@ abstract class ShiftRepository {
   Future<ShiftSession> pauseShift(String staffId);
   Future<ShiftSession> resumeShift(String staffId);
   Future<ShiftSession> endShift(String staffId);
+  Future<void> markShiftsAsPaid(
+    String staffId,
+    List<String> shiftIds,
+    String payoutId,
+  );
 }

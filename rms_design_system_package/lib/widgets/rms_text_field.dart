@@ -31,6 +31,12 @@ class RmsTextField extends StatelessWidget {
   /// Optional validator function to validate the text field's input.
   final String? Function(String?)? validator;
 
+  /// Whether the text field is read only.
+  final bool readOnly;
+
+  /// Callback when the text field is tapped.
+  final VoidCallback? onTap;
+
   const RmsTextField({
     super.key,
     required this.label,
@@ -41,6 +47,8 @@ class RmsTextField extends StatelessWidget {
     this.suffixIcon,
     this.labelSuffix,
     this.validator,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
@@ -68,6 +76,8 @@ class RmsTextField extends StatelessWidget {
           onChanged: onChanged,
           obscureText: obscureText,
           validator: validator,
+          readOnly: readOnly,
+          onTap: onTap,
           style: const TextStyle(color: TextColors.primary),
           decoration: InputDecoration(
             hintText: hintText,

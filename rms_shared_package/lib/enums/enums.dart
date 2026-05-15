@@ -5,16 +5,22 @@ enum UserRole { waiter, billing, chef, cashier, kitchen }
 enum ShiftStatus { notStarted, active, paused, ended, missed }
 
 /// Represents the different statuses an order can have.
-enum OrderStatus { pending, preparing, ready, served, completed }
+enum OrderStatus { pending, preparing, ready, served, completed, cancelled }
 
 /// Represents the different statuses a payment can have.
 enum PaymentStatus { pending, paid }
 
 /// Represents the different methods of payment.
-enum PaymentMethod { cash, card, upi }
+enum PaymentMethod { cash, card, upi, bankTransfer }
 
 /// Represents the different shapes a table can have.
 enum TableShape { rectangle, circle }
 
 /// Represents the different statuses a table can have.
 enum TableStatus { available, occupied, reserved, served, cleaning }
+
+/// Represents the type of wage calculation for staff.
+enum WageType { hourly, monthly }
+
+/// Represents the status of a salary payout transaction.
+enum PayoutStatus { pending, processing, success, failed }

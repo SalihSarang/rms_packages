@@ -229,6 +229,22 @@ class FirestoreShiftRepository implements ShiftRepository {
     return updated;
   }
 
+  @override
+  Future<void> markShiftsAsPaid(
+    String staffId,
+    List<String> shiftIds,
+    String payoutId,
+  ) async {
+    final batch = firestore.batch();
+    final collection = _historyCollection(staffId);
+
+    for (final id in shiftIds) {
+      batch.update(collection.doc(id), {'isPaid': true, 'payoutId': payoutId});
+    }
+
+    await batch.commit();
+  }
+
   Future<ShiftSession> _requireCurrentSession(String staffId) async {
     final session = await getCurrentShiftSession(staffId);
     if (session == null) {

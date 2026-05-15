@@ -4,6 +4,8 @@ export 'models/shift_models/shift_schedule.dart';
 export 'models/shift_models/shift_session.dart';
 export 'models/order_model/order_model.dart';
 export 'models/order_model/ordered_menu_model.dart';
+export 'models/bill_model/bill_model.dart';
+export 'models/restaurant_model/restaurant_model.dart';
 export 'models/table_models/hall_model.dart';
 export 'models/table_models/table_model.dart';
 export 'models/menu_models/food_model/food_model.dart';

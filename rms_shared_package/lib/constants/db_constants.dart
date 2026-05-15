@@ -32,3 +32,9 @@ class TableDbConstants {
 class KitchenDbConstants {
   static const String kitchenQueue = 'kitchen_queue';
 }
+
+/// Settings Database Constants
+class SettingsDbConstants {
+  static const String restaurantSettings = 'restaurant_settings';
+  static const String businessProfileDoc = 'business_profile';
+}
